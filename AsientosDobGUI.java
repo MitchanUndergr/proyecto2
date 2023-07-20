@@ -18,6 +18,7 @@ public class AsientosDobGUI extends JFrame {
         int screenWidth = screenSize.width;
         int screenHeight = screenSize.height;
         setSize(screenWidth, screenHeight);
+        setResizable(false);
 
         imagenfondo1 = new ImageIcon("src/dibujos/autobus3.png").getImage();
         imagenfondo1 = imagenfondo1.getScaledInstance(screenWidth, screenHeight, Image.SCALE_SMOOTH);
