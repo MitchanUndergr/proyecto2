@@ -1,9 +1,8 @@
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-
+import java.util.HashSet;
 
 public class Asientos {
     private void agregarContenido(ArrayList<String> arrayList1, ArrayList<String> arrayList2) {
@@ -104,16 +103,24 @@ public class Asientos {
                 for (int i = 6; i < datosPasaje.length; i++) {
                     String[] asientos = datosPasaje[i].trim().split("\\s+"); // Dividir los datos de asientos por espacios
                     for (String asiento : asientos) {
-                        arrayAsientos.add(asiento); // Agregar los asientos individuales al ArrayList
+                        if (!arrayAsientos.contains(asiento)) {
+                            arrayAsientos.add(asiento); // Agregar los asientos individuales al ArrayList
+                        }
                     }
                 }
 
                 // Si hay coincidencia, guardar los datos adicionales en el ArrayList correspondiente
                 if (origenPasaje.equals(Origen) && destinoPasaje.equals(Destino) && fechaPasaje.equals(fechas) && horaPasaje.equals(Hora) && tipoAsientoPasaje.equals(Tipoasiento)) {
                     if (Tipoasiento.equals("Semi cama")) {
-                        seleccionAsientos.addAll(arrayAsientos);
+                        HashSet<String> setAsientos = new HashSet<>(seleccionAsientos); // Convertimos seleccionAsientos a un HashSet temporal
+                        setAsientos.addAll(arrayAsientos); // Agregamos todos los elementos de arrayAsientos al HashSet temporal
+
+                        seleccionAsientos = new ArrayList<>(setAsientos);
                     } else if (Tipoasiento.equals("Salon cama")) {
-                        seleccionAsientosdob.addAll(arrayAsientos);
+                        HashSet<String> setAsientosdob = new HashSet<>(seleccionAsientosdob); // Convertimos seleccionAsientosdob a un HashSet temporal
+                        setAsientosdob.addAll(arrayAsientos); // Agregamos todos los elementos de arrayAsientos al HashSet temporal
+
+                        seleccionAsientosdob = new ArrayList<>(setAsientosdob);
                     }
                 }
             }
@@ -148,6 +155,7 @@ public class Asientos {
         agregarContenido(seleAsientos,seleccionAsientos);
         return seleccionAsientos;
     }
+
 
     public ArrayList<String> AsientosSeleccionadosDob(){
         agregarContenido(seleAsientosdob,seleccionAsientosdob);
@@ -195,4 +203,3 @@ public class Asientos {
         return seleccionAsientosdob;
     }
 }
-
