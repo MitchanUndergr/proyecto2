@@ -5,13 +5,12 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AsientosDobGUI extends JFrame {
+public class AsientosSalonGUI extends AsientosGUI {
     private Asientos asientos;
     private Image imagenfondo1,imagen2;
     private JButton botonReserva;
-    private String Origen,Destino,fechas;
     private JButton[] botonesAsiento = new JButton[60];
-    public AsientosDobGUI() {
+    public AsientosSalonGUI() {
         setTitle("Asientos");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
@@ -121,7 +120,8 @@ public class AsientosDobGUI extends JFrame {
         asientos= new Asientos();
     }
 
-    public void ElegirAsientosdob(){
+    @Override
+    public void ElegirAsientos(){
 
         if(!asientos.getSeleccionAsientosdob().isEmpty()) {
             for (String asiento : asientos.getSeleccionAsientosdob()) {
@@ -185,38 +185,9 @@ public class AsientosDobGUI extends JFrame {
                     nuevareserva.MuestraReserva(asientos);
                     nuevareserva.setVisible(true);
                 } else {
-                    JOptionPane.showMessageDialog(AsientosDobGUI.this, "Debe seleccionar al menos un asiento.", "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(AsientosSalonGUI.this, "Debe seleccionar al menos un asiento.", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
-    }
-    public void ImplementarFiltro(){
-        Origen = asientos.getOrigen();
-        Destino =asientos.getDestino();
-        fechas = asientos.getFechas();
-
-        JLabel origen1 = new JLabel(Origen);
-        origen1.setForeground(new Color(35, 35, 35)); // Color de fuente
-        Font font = origen1.getFont();
-        Font fontNueva = font.deriveFont(font.getSize() + 2.0f); // Tamaño de la fuente
-        origen1.setFont(fontNueva);
-        origen1.setBounds(95, 110, 100, 30);
-        add(origen1);
-
-        JLabel destino = new JLabel(Destino);
-        destino.setForeground(new Color(35, 35, 35)); // Color de fuente
-        Font font2 = destino.getFont();
-        Font fontNueva2 = font2.deriveFont(font.getSize() + 2.0f); // Tamaño de la fuente
-        destino.setFont(fontNueva2);
-        destino.setBounds(285, 110, 100, 30);
-        add(destino);
-
-        JLabel fecha = new JLabel(fechas);
-        fecha.setForeground(new Color(35, 35, 35)); // Color de fuente
-        Font font3 = fecha.getFont();
-        Font fontNueva3 = font3.deriveFont(font.getSize() + 2.0f); // Tamaño de la fuente
-        fecha.setFont(fontNueva3);
-        fecha.setBounds(470, 110, 100, 30);
-        add(fecha);
     }
 }
