@@ -8,7 +8,6 @@ public class PasajesGUI extends JFrame {
     private JPanel panel1;
     private String Origen,Destino,fechas;
     private JButton botonComprar;
-
     private Filtro_Pasajes filtro;
     public PasajesGUI() {
         setTitle("Mi compra");
@@ -75,8 +74,9 @@ public class PasajesGUI extends JFrame {
                     public void actionPerformed(ActionEvent e) {
                         dispose();
                         GuardaDatos.guardarDatosT(origen,Destino,fechas,hora,asiento,precio);
-                        AsientosDobGUI nuevoasientodob = new AsientosDobGUI();
-                        nuevoasientodob.ElegirAsientosdob();
+                        AsientosSalonGUI nuevoasientodob = new AsientosSalonGUI();
+                        //nuevoasientodob.ElegirAsientosdob();
+                        nuevoasientodob.ElegirAsientos();
                         nuevoasientodob.ImplementarFiltro();
                         nuevoasientodob.setVisible(true);
                     }
@@ -86,7 +86,7 @@ public class PasajesGUI extends JFrame {
                     public void actionPerformed(ActionEvent e) {
                         dispose();
                         GuardaDatos.guardarDatosT(origen,Destino,fechas,hora,asiento,precio);
-                        AsientosGUI nuevoasiento = new AsientosGUI();
+                        AsientosSemiGUI nuevoasiento = new AsientosSemiGUI();
                         nuevoasiento.ElegirAsientos();
                         nuevoasiento.ImplementarFiltro();
                         nuevoasiento.setVisible(true);
@@ -125,7 +125,5 @@ public class PasajesGUI extends JFrame {
         fecha.setFont(fontNueva3);
         fecha.setBounds(470, 110, 100, 30);
         add(fecha);
-
-        //filtro.getListaFiltrada();
     }
 }
