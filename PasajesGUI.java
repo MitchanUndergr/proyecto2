@@ -13,9 +13,9 @@ public class PasajesGUI extends JFrame {
     public PasajesGUI() {
         setTitle("Mi compra");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        int screenWidth = screenSize.width;
-        int screenHeight = screenSize.height;
+        //Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+        int screenWidth = 1350;//screenSize.width;
+        int screenHeight = 800;//screenSize.height;
         setSize(screenWidth, screenHeight);
         setResizable(false);
 
