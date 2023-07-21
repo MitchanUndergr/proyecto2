@@ -9,6 +9,7 @@ public class PasajesGUI extends JFrame {
     private String Origen,Destino,fechas;
     private JButton botonComprar;
     private Filtro_Pasajes filtro;
+    private AsientoGUIFactory factory;
     public PasajesGUI() {
         setTitle("Mi compra");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -28,6 +29,7 @@ public class PasajesGUI extends JFrame {
         panel1.setOpaque(false);
 
         filtro= new Filtro_Pasajes();
+        factory = new AsientoGUIFactory();
     }
     public void mostrarDatos() {
         List<DatosViaje> listaFiltrada= filtro.getListaFiltrada();
@@ -74,11 +76,8 @@ public class PasajesGUI extends JFrame {
                     public void actionPerformed(ActionEvent e) {
                         dispose();
                         GuardaDatos.guardarDatosT(origen,Destino,fechas,hora,asiento,precio);
-                        AsientosSalonGUI nuevoasientodob = new AsientosSalonGUI();
-                        //nuevoasientodob.ElegirAsientosdob();
-                        nuevoasientodob.ElegirAsientos();
-                        nuevoasientodob.ImplementarFiltro();
-                        nuevoasientodob.setVisible(true);
+                        factory.crearAsientoGUI("Salon cama");
+                        factory.UsarAsientoGUI();
                     }
                 });
             } else if (asiento.equals("Semi cama")) {
@@ -86,10 +85,8 @@ public class PasajesGUI extends JFrame {
                     public void actionPerformed(ActionEvent e) {
                         dispose();
                         GuardaDatos.guardarDatosT(origen,Destino,fechas,hora,asiento,precio);
-                        AsientosSemiGUI nuevoasiento = new AsientosSemiGUI();
-                        nuevoasiento.ElegirAsientos();
-                        nuevoasiento.ImplementarFiltro();
-                        nuevoasiento.setVisible(true);
+                        factory.crearAsientoGUI("Semi cama");
+                        factory.UsarAsientoGUI();
                     }
                 });
 
