@@ -19,7 +19,7 @@ public class PasajesGUI extends JFrame {
         setSize(screenWidth, screenHeight);
         setResizable(false);
 
-        imagenfondo1 = new ImageIcon("C:/Users/user/Downloads/PROGRA2/progra2proyecto/src/dibujos/autobus.png").getImage();
+        imagenfondo1 = new ImageIcon("src/dibujos/autobus.png").getImage();
         imagenfondo1 = imagenfondo1.getScaledInstance(screenWidth, screenHeight, Image.SCALE_SMOOTH);
         JLabel principal = new JLabel(new ImageIcon(imagenfondo1));
         setContentPane(principal);
